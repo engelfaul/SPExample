@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id "net.serenity-bdd.serenity-gradle-plugin" version "3.5.0"
 }
 
 repositories {
@@ -15,11 +16,21 @@ ext {
     logbackVersion = '1.2.10'
     junitVersion = '5.8.2'
     assertJVersion = '3.23.1'
+    lombokVersion = '1.18.20'
 }
 
 dependencies {
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
     implementation 'org.aeonbits.owner:owner-java8:1.0.9'
+    implementation group: 'net.serenity-bdd', name: 'serenity-reports', version: '3.4.2'
+    implementation "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
     testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
     testImplementation "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}"
     testImplementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
@@ -46,8 +57,4 @@ publishing {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-test {
-    testLogging.showStandardStreams = true
 }

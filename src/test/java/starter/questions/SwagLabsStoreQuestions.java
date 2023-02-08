@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.questions.Enabled;
 import net.serenitybdd.screenplay.questions.Text;
 import starter.ui.SwagLabsStoreUI;
 
-public class SwagLabsStoreQuestion {
+public class SwagLabsStoreQuestions {
 
     public static Question<Boolean> ProductsIsPresent(){
         return actor -> Enabled.of(SwagLabsStoreUI.PRODUCTS_TITTLE).answeredBy(actor);

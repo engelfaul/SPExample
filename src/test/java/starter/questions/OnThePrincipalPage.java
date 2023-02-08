@@ -5,10 +5,10 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import starter.ui.SwagLabsStoreUI;
 
-public class ProductsAvailable implements Question {
+public class OnThePrincipalPage implements Question {
 
-    public static Question<String> value(){
-        return new ProductsAvailable();
+    public static Question<String> theTitleIs(){
+        return new OnThePrincipalPage();
     }
     @Override
     public Object answeredBy(Actor actor) {
